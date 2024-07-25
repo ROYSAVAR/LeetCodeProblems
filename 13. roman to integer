@@ -1,1 +1,87 @@
+class Solution {
+public:
+    int romanToInt(string s) 
+    {
+        int numero = 0; 
 
+        for(int i = 0; i < s.size(); i++)
+        {
+            
+            switch(s[i])
+            {
+                case 'I':
+
+                    if(s[i+1] == 'V')
+                    {
+                        numero += 4;
+                        i++; 
+                        break;
+                    }
+
+                    if(s[i+1] == 'X')
+                    {
+                        numero += 9;
+                        i++; 
+                        break;
+                    }
+
+                    numero += 1; 
+                break;
+
+                case 'V':
+                numero += 5; 
+                break;
+                
+                case 'X':
+
+                    if(s[i+1] == 'L')
+                    {
+                        numero += 40;
+                        i++; 
+                        break;
+                    }
+
+                    if(s[i+1] == 'C')
+                    {
+                        numero += 90;
+                        i++; 
+                        break;
+                    }
+                numero += 10; 
+                break;
+
+                case 'L':
+                numero += 50; 
+                break;
+
+                case 'C':
+                    if(s[i+1] == 'D')
+                    {
+                        numero += 400;
+                        i++; 
+                        break;
+                    }
+
+                    if(s[i+1] == 'M')
+                    {
+                        numero += 900;
+                        i++; 
+                        break;
+                    }
+                numero += 100; 
+                break;
+
+                case 'D':
+                numero += 500; 
+                break;
+
+                case 'M':
+                numero += 1000; 
+                break;
+
+            }
+        }
+
+        return numero; 
+    }
+};
