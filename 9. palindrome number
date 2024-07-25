@@ -1,0 +1,26 @@
+class Solution {
+public:
+    bool isPalindrome(int x) 
+    {
+        if(x<0)
+        {
+            return false;
+        }
+
+        string original;
+        string volteada; 
+
+        original = to_string(x);
+        volteada = original; 
+
+
+        reverse(volteada.begin(), volteada.end()); // Invertir la copia
+       
+        if(original == volteada)
+        {
+            return true;
+        }
+        else 
+        return false; 
+    }
+};
