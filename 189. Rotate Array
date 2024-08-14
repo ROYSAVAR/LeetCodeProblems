@@ -1,0 +1,14 @@
+class Solution {
+public:
+    void rotate(vector<int>& nums, int k) 
+    {
+       int n = nums.size();
+       k = k % n; // Asegurar que k no sea mayor que el tamaño del vector
+       if (k == 0) return; // Si k es 0, no se necesita rotar
+
+       int size_aux = n - k;
+       reverse(nums.begin(), nums.end());
+       reverse(nums.begin()+k, nums.end());
+       reverse(nums.begin(), nums.begin()+k);
+    }
+};
