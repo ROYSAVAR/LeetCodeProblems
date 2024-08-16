@@ -1,0 +1,36 @@
+class Solution {
+public:
+    bool isPalindrome(string s) 
+    {
+        // convert all to lowcase
+        transform(s.begin(), s.end(), s.begin(), ::tolower);
+
+        int left = 0; 
+        int right = s.size()-1;
+
+        while(left < right)
+        {
+            while( left < right && !isalnum(s[left]) )
+            {
+                left++;
+            }
+
+            while( left < right &&  !isalnum(s[right]) )
+            {
+                right--;
+            }
+
+            if(s[left] != s[right])
+            {
+                //cout<<"false";
+                return false;
+            }
+
+            left++;
+            right--;
+        }
+        
+        //cout<<"true";
+        return true;            
+    }
+};
