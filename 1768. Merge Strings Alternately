@@ -1,0 +1,27 @@
+    class Solution {
+    public:
+        string mergeAlternately(string word1, string word2) {
+
+            string nueva;
+
+            int medida1 = word1.size(), medida2 = word2.size();
+            int larga = max(medida1, medida2);
+            
+            for(int i = 0; i < larga; i++)
+            {
+                if(i < medida1)
+                {
+                    nueva += word1[i];
+                }
+                
+                if(i < medida2)
+                {
+                    nueva += word2[i];
+
+                }
+            }
+
+            return nueva; 
+            
+        }
+    };
