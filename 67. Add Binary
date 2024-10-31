@@ -1,0 +1,64 @@
+class Solution {
+public:
+tuple<char, char> suma(char n1, char n2, char carry) 
+{
+        // Caso en el que ambos son '0' y el carry es '0'
+        if (n1 == '0' && n2 == '0' && carry == '0') {
+            return make_tuple('0', '0');
+        }
+        // Caso en el que ambos son '0' y el carry es '1'
+        if (n1 == '0' && n2 == '0' && carry == '1') {
+            return make_tuple('1', '0');
+        }
+        // Caso en el que uno es '1', el otro '0' y carry '0'
+        if (n1 != n2 && carry == '0') {
+            return make_tuple('1', '0');
+        }
+        // Caso en el que uno es '1', el otro '0' y carry '1'
+        if (n1 != n2 && carry == '1') {
+            return make_tuple('0', '1');
+        }
+        // Caso en el que ambos son '1' y carry '0'
+        if (n1 == '1' && n2 == '1' && carry == '0') {
+            return make_tuple('0', '1');
+        }
+        // Caso en el que ambos son '1' y carry '1'
+        if (n1 == '1' && n2 == '1' && carry == '1') {
+            return make_tuple('1', '1');
+        }
+        
+        return make_tuple('0', '0'); // Caso por defecto, aunque no debería llegar aquí
+    }
+
+    string addBinary(string a, string b) 
+    {
+        string sumada;
+        char carry = '0'; 
+        int medida1 = a.size(), medida2 = b.size();
+        int maxim = max(medida1, medida2);
+        
+        // Rellenar con ceros la cadena más corta
+        if (medida1 < medida2) {
+            a.insert(0, medida2 - medida1, '0');
+        } else if (medida2 < medida1) {
+            b.insert(0, medida1 - medida2, '0');
+        }
+
+        for (int i = maxim - 1; i >= 0; i--) {
+            tuple<char, char> result = suma(a[i], b[i], carry);
+            char res = get<0>(result);
+            char new_carry = get<1>(result);
+            
+            carry = new_carry;
+            sumada.insert(0, 1, res);  // Insertar al inicio de `sumada`
+    }
+
+
+        // Si al final queda un carry, lo agregamos al inicio de la cadena
+        if (carry == '1') {
+            sumada.insert(0, 1, carry);
+        }
+
+        return sumada; 
+    }
+};
