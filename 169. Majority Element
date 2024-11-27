@@ -1,0 +1,28 @@
+class Solution {
+public:
+    int majorityElement(vector<int>& nums) {
+        
+        map<int, int> mymap;
+
+        int maxKey = -1;
+        int maxValue = -1;
+
+        for(int i = 0; i< nums.size(); i++)
+        {
+            mymap[nums[i]]++;
+        }
+
+        for(const auto& pair: mymap)
+        {
+            if(pair.second > maxValue)
+            {
+                maxValue = pair.second;
+                maxKey = pair.first; 
+            }
+        }
+
+
+        
+        return maxKey; 
+    }
+};
