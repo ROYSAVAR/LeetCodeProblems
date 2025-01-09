@@ -1,0 +1,36 @@
+class Solution {
+public:
+    bool isValid(string s) 
+    {
+        if(s.size() %2 != 0) return false; 
+
+        stack<char> pila; 
+
+        int i = 0; 
+
+        for(i; i < s.size(); i++)
+        {
+            
+
+            if(s[i] != ')' && s[i] != ']' && s[i] != '}' )
+            {
+                pila.push(s[i]);
+            }
+
+            else
+            {
+                char top = pila.top();
+                if((s[i] == ')' && top != '(') ||
+                   (s[i] == ']' && top != '[') ||
+                   (s[i] == '}' && top != '{'))
+                {
+                    return false;
+                }
+
+                pila.pop();
+            }
+        }
+
+        return pila.empty(); 
+    }
+};
