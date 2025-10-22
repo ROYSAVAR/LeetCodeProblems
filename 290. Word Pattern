@@ -1,0 +1,67 @@
+class Solution {
+public:
+    bool wordPattern(string pattern, string s) {
+
+       
+       
+
+        vector<string> palabras;
+        string aux;
+
+        for(int j = 0; j<s.length(); j++){
+            
+            if(s[j] != ' '){
+                aux += s[j];
+            }
+            else{
+                palabras.push_back(aux);
+                aux = "";
+            }
+        } 
+        
+        // Agregar la última palabra si existe
+        if (!aux.empty()) {
+            palabras.push_back(aux);
+        }
+
+        // si miden diferente no es valido retorna falso
+        if(palabras.size() != pattern.length())
+            return false;
+
+
+
+        map<char, string> letraAPalabra;
+        map<string, bool> usados;
+
+
+        char letra;
+        string palabra;
+
+        for(int i = 0; i < pattern.length(); i++){
+
+            letra = pattern[i];
+            palabra = palabras[i];
+            
+            // Si la letra no tiene asignación y la palabra no está usada
+            if(letraAPalabra.count(letra)  == 0 && usados[palabra] != true)
+            {
+
+                letraAPalabra[letra] = palabra;
+                usados[palabra] = true;
+            }
+
+            
+            else {
+                    // Si ya existe la letra, debe coincidir con la palabra
+                    if (letraAPalabra[letra] != palabra) {
+                        return false;
+                    }
+
+                        
+                 }
+        }
+
+        return true;
+
+    }
+};
