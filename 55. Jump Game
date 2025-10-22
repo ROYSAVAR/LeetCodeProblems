@@ -1,0 +1,22 @@
+class Solution {
+public:
+    bool canJump(vector<int>& nums) {
+
+        int medida = nums.size();
+        int brincomax = 0;
+        
+
+        for(int i = 0; i < medida; i ++){
+            
+            if(brincomax < i){
+                return false;
+            }
+
+            brincomax = max(i + nums[i], brincomax);
+        }
+
+
+        return true ;
+        
+    }
+};
