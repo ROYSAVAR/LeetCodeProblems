@@ -1,0 +1,40 @@
+class Solution {
+public:
+
+
+    int reverseBits(int n) 
+    {
+    
+
+    string binario1 = "";
+
+
+    while( n > 0)    {
+        if(n%2 == 0){
+            binario1+= "0";
+        }
+        else{
+            binario1+= "1";
+        }
+        n = n/2;
+    }
+
+    while (binario1.length() < 32) {
+    binario1 += "0";
+    }
+    
+    int reversed = 0;
+    int potencia = 0;
+
+    for(int i = binario1.length()-1; i >= 0 ; i--)
+    {
+        if(binario1[i] == '1'){
+            reversed += pow(2, potencia);
+        }
+        potencia++;
+    }
+    
+    return reversed;
+    }   
+
+};
