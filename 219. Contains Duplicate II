@@ -1,0 +1,23 @@
+class Solution {
+public:
+    bool containsNearbyDuplicate(vector<int>& nums, int k) {
+
+        unordered_map<int,int> mymap;
+
+
+        for(int i = 0; i<nums.size(); i++){
+            
+            // seen.count(x) devuelve 1 si x está en el mapa, 0 si no está
+            if(mymap.count(nums[i])){
+                    if(i - mymap[nums[i]] <= k){
+                        return true;
+                    }
+            }
+            
+            // Guardamos o actualizamos el índice actual del número
+            mymap[nums[i]] = i;
+
+        }
+        return false;
+    }
+};
