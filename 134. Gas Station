@@ -1,0 +1,29 @@
+class Solution {
+public:
+    int canCompleteCircuit(vector<int>& gas, vector<int>& cost) {
+        
+        int tanque_gas = 0; 
+        int gasolinera_inicial = 0;
+        int total = 0;
+        int diferencia = 0;
+       
+        // ciclo para recorrer cada ruta
+        for(int i=0; i< gas.size(); i++){
+            diferencia = gas[i] - cost[i];
+            total += diferencia;
+            tanque_gas += diferencia;
+
+            if(tanque_gas < 0){
+                // no se puede llegar a la que sigue desde aqui 
+                // Reiniciamos el inicio y el tanque
+ 
+                gasolinera_inicial = i + 1;
+                tanque_gas = 0;
+
+            }
+        }
+
+        return total >= 0? gasolinera_inicial : -1;
+
+    }
+};
