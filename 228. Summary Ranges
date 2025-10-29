@@ -1,0 +1,27 @@
+class Solution {
+public:
+    vector<string> summaryRanges(vector<int>& nums) {
+
+        vector<string> rangos;
+        int start = 0;
+        int n = nums.size();
+        int i = 0;
+        while(i<n){
+
+            start = nums[i];
+
+            while (i + 1 < n && nums[i + 1] == nums[i] + 1) {
+                i++;
+            }
+            if (start == nums[i]) {
+                rangos.push_back(to_string(start));
+            } else {
+                rangos.push_back(to_string(start) + "->" + to_string(nums[i]));
+            }
+            i++;          
+        }
+
+        return rangos;
+        
+    }
+};
