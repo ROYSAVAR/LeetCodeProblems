@@ -1,0 +1,13 @@
+class Solution {
+public:
+    bool isPowerOfTwo(int n) {
+        
+        // si es negativo se descarta
+        if(n<1){ return false; }
+
+        // comparar bit por bit, numeros potenccia de 2 siempre tienen un solo bit encendido 
+        return (n & (n - 1)) == 0;
+
+
+    }
+};
