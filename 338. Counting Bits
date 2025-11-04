@@ -1,0 +1,34 @@
+class Solution {
+public:
+
+    
+    string intToBinaryString(int num) {
+        return std::bitset<32>(num).to_string(); // 32 bits por defecto
+    }
+
+    int contarunos(string cad){
+        int cont = 0;
+        for(int i = 0; i < cad.length(); i++){
+            if(cad[i] == '1'){
+                cont++;
+            }
+            
+        }
+        return cont;
+    }
+
+    vector<int> countBits(int n) {
+        
+        vector<int> ans;
+
+        for(int i = 0; i <= n; i++){
+
+            string binario = intToBinaryString(i);
+            int numunos = contarunos(binario);
+
+            ans.push_back(numunos);
+        }
+
+        return ans;
+    }
+};
