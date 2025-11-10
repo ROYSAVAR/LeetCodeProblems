@@ -1,0 +1,31 @@
+class Solution {
+public:
+    int reverse(int x) 
+    {
+        bool isNegative = false; 
+        
+        if(x < 0)
+        {
+            isNegative = true; 
+        }
+        
+    // intenta reversear, si se puede regresa el numero
+    try{
+        string reversed = to_string(x);
+        std::reverse(reversed.begin(), reversed.end());
+
+        int num = std::stoi(reversed); // convierte string a int
+
+        if(isNegative){
+            num = num * -1;
+        }
+        return num;
+    }
+
+    // si no se puede y se desvorda regresa 0 
+    catch(const exception& e){
+        return 0;
+    }
+    
+    }
+};
