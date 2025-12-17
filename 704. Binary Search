@@ -1,0 +1,32 @@
+class Solution {
+public:
+    int search(vector<int>& nums, int target) {
+
+        sort(nums.begin(), nums.end());
+
+        int bajo = 0, alto = nums.size() -1;
+        
+
+
+        while(bajo <= alto){
+
+            int mitad = (bajo + alto) / 2;
+
+            if(nums[mitad] == target) return mitad;
+
+          
+            // esta de lado derecho 
+            if(target > nums[mitad]){
+                bajo = mitad + 1;
+            }
+
+              // esta de lado izquierdo 
+            else{
+                alto  = mitad -1;
+            }
+
+        }
+        
+        return -1;
+    }
+};
